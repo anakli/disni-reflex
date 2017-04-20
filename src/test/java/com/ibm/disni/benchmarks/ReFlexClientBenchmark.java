@@ -1,9 +1,11 @@
 package com.ibm.disni.benchmarks;
 
-import com.ibm.disni.reflex.ReFlexEndpoint;
 import org.apache.commons.cli.*;
 
+import stanford.mast.reflex.ReFlexEndpoint;
+
 import java.io.IOException;
+import java.net.URI;
 
 public abstract class ReFlexClientBenchmark {
 
@@ -15,11 +17,11 @@ public abstract class ReFlexClientBenchmark {
 
 	abstract long run(long iterations, int queueDepth, int transferSize, AccessPattern accessPattern, boolean write) throws IOException;
 
-	abstract void connect(long IPaddr, int port) throws IOException;
+	abstract void connect(URI uri) throws Exception;
 
 	abstract void close() throws IOException;
 
-	void start(String[] args) throws IOException {
+	void start(String[] args) throws Exception {
 		Options options = new Options();
 		Option address = Option.builder("a").required().desc("ip address").hasArg().type(Number.class).build();
 		Option port = Option.builder("p").desc("port").hasArg().type(Number.class).build();
@@ -59,7 +61,8 @@ public abstract class ReFlexClientBenchmark {
 			System.exit(-1);
 		}
 
-		connect(IPaddr, dst_port);
+		URI uri = new URI("reflex:://" + IPaddr + ":" + dst_port);
+		connect(uri);
 
 		AccessPattern accessPatternValue = AccessPattern.valueOf(line.getOptionValue("m"));
 		String str = line.getOptionValue("rw");

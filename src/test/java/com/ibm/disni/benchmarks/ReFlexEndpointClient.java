@@ -28,9 +28,9 @@ import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.ibm.disni.reflex.ReFlexEndpoint;
-import com.ibm.disni.reflex.ReFlexEndpointGroup;
-import com.ibm.disni.reflex.ReFlexCommand;
+import stanford.mast.reflex.ReFlexCommand;
+import stanford.mast.reflex.ReFlexEndpoint;
+import stanford.mast.reflex.ReFlexEndpointGroup;
 import sun.nio.ch.DirectBuffer;
 
 public class ReFlexEndpointClient extends ReFlexClientBenchmark {
@@ -104,10 +104,10 @@ public class ReFlexEndpointClient extends ReFlexClientBenchmark {
 		return end - start;
 	}
 
-	void connect(long IPaddr, int port) throws IOException {
+	void connect(URI uri) throws Exception {
 		this.group = new ReFlexEndpointGroup() ;
 		this.endpoint = group.createEndpoint() ;
-		endpoint.connect(IPaddr, port);
+		endpoint.connect(uri);
 	}
 
 	void close() throws IOException {
@@ -118,7 +118,7 @@ public class ReFlexEndpointClient extends ReFlexClientBenchmark {
 		}
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		new ReFlexEndpointClient().start(args);
 	}
 }
