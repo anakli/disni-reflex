@@ -33,9 +33,6 @@ public class NativeDispatcher {
 		System.loadLibrary("disni");
 	}
 
-	/* DPDK eal initialization is necessary to setup hugepages, VFIO etc. */
-	public native int _rte_eal_init(String[] args);
-
 	/* SPDK util */
 
 	/* buffers returned are locked and have vtophys translation -> required for local NVMe access */
@@ -44,9 +41,7 @@ public class NativeDispatcher {
 	public native void _free(long address);
 
 	/* ReFlex functions */
-
 	public native void _hello_reflex();
-
 	
 	/* libevent functions */
 	public native void _connect(long ip_addr, int port);
