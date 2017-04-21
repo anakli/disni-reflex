@@ -228,7 +228,7 @@ JNIEXPORT void Java_stanford_mast_reflex_NativeDispatcher__1hello_1reflex
 }
 
 
-void connect(struct bufferevent *bev, short events, void *ptr)
+void connect_cb(struct bufferevent *bev, short events, void *ptr)
 {
 	if (events & BEV_EVENT_CONNECTED) {
 		//printf("connected to the server!\n");
