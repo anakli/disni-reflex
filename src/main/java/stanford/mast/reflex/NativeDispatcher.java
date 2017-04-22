@@ -30,7 +30,7 @@ public class NativeDispatcher {
 	//private static final Logger logger = DiSNILogger.getLogger();
 
 	static {
-		System.loadLibrary("disni");
+		System.loadLibrary("reflex");
 	}
 
 	/* SPDK util */
