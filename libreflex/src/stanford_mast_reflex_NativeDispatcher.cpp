@@ -209,7 +209,7 @@ JNIEXPORT jlong JNICALL Java_stanford_mast_reflex_NativeDispatcher__1malloc
  * Method:    _free
  * Signature: (J)V
  */
-JNIEXPORT void Java_stanford_mast_reflex_NativeDispatcher__1free
+JNIEXPORT void JNICALL Java_stanford_mast_reflex_NativeDispatcher__1free
   (JNIEnv *env, jobject obj, jlong addr)
 {
 	free((void*) addr);
@@ -221,7 +221,7 @@ JNIEXPORT void Java_stanford_mast_reflex_NativeDispatcher__1free
  * Method:    _hello_reflex
  * Signature: ()V
  */
-JNIEXPORT void Java_stanford_mast_reflex_NativeDispatcher__1hello_1reflex
+JNIEXPORT void JNICALL Java_stanford_mast_reflex_NativeDispatcher__1hello_1reflex
   (JNIEnv *env, jobject obj)
 {
 	printf("Hello ReFlex!\n");
@@ -320,7 +320,7 @@ static void set_affinity(int cpu)
  * Method:    _connect
  * Signature: ()V
  */
-JNIEXPORT void Java_stanford_mast_reflex_NativeDispatcher__1connect
+JNIEXPORT void JNICALL Java_stanford_mast_reflex_NativeDispatcher__1connect
   (JNIEnv *env, jobject obj, jlong ip_addr, jint port)
 {
 	printf("connect(): begin libevent init....\n");
