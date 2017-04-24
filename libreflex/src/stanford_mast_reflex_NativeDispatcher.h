@@ -9,14 +9,6 @@ extern "C" {
 #endif
 /*
  * Class:     stanford_mast_reflex_NativeDispatcher
- * Method:    _rte_eal_init
- * Signature: ([Ljava/lang/String;)I
- */
-JNIEXPORT jint JNICALL Java_stanford_mast_reflex_NativeDispatcher__1rte_1eal_1init
-  (JNIEnv *, jobject, jobjectArray);
-
-/*
- * Class:     stanford_mast_reflex_NativeDispatcher
  * Method:    _malloc
  * Signature: (JJ)J
  */

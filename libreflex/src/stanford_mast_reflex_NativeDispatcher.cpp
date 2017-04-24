@@ -128,67 +128,6 @@ class JNIString {
 
 
 
-
-/*
- * Class:     com_ibm_disni_reflex_NativeDispatcher
- * Method:    _rte_eal_init
- * Signature: ([Ljava/lang/String;)I
- */
-//JNIEXPORT jint JNICALL Java_com_ibm_disni_reflex_NativeDispatcher__1rte_1eal_1init
-//  (JNIEnv *env, jobject obj, jobjectArray objArr)
-//{
-//	return 0;
-//}
-JNIEXPORT jint JNICALL Java_stanford_mast_reflex_NativeDispatcher__1rte_1eal_1init 
-(JNIEnv* env, jobject thiz, jobjectArray args) 
-{
-	
-	printf("-- enter rte_eal_init --\n");
-    /*
-	jsize length = env->GetArrayLength(args);
-    int argc = length + 4;
-    const char** cargs = new const char*[argc];
-    JNIString** jnistrs = new JNIString*[length];
-    for (jsize i = 0; i < length; i++) {
-        jstring string = (jstring) env->GetObjectArrayElement(args, i);
-        jnistrs[i] = new JNIString(env, string);
-        cargs[i] = jnistrs[i]->c_str();
-    }
-
-    // set core for DPDK thread - we do not use this thread, unfortunately
-    // it cannot be turned of
-    cargs[length] = "-l";
-    std::stringstream cpu;
-    cpu << sched_getcpu();
-    std::string cpu_str = cpu.str();
-    cargs[length + 1] = cpu_str.c_str();
-
-    // unique prefix to be able to start multiple SPDK processes
-    cargs[length + 2] = "--file-prefix";
-    pid_t pid = getpid();
-    std::stringstream prefix;
-    prefix << "rte_" << pid;
-    std::string prefix_str = prefix.str();
-    cargs[length + 3] = prefix_str.c_str();
-
-    std::cerr << "rte_eal_init ";
-    for (size_t i = 0; i < argc; i++) {
-        std::cerr << cargs[i] << " ";
-    }
-    std::cerr << std::endl;
-
-	printf("Starting DPDK env init...\n");
-    int ret = rte_eal_init(argc, const_cast<char**>(cargs));
-    for (jsize i = 0; i < length; i++) {
-        delete jnistrs[i];
-    }
-    delete[] cargs;
-    delete[] jnistrs;
-	printf("Finished DPDK init, ret: %d\n", ret);
-	*/
-	return 0;
-}
-
 /*
  * Class:     com_ibm_disni_reflex_NativeDispatcher
  * Method:    _malloc
