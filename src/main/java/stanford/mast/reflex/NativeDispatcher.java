@@ -27,27 +27,24 @@ package stanford.mast.reflex;
 import java.util.ArrayList;
 
 public class NativeDispatcher {
-	//private static final Logger logger = DiSNILogger.getLogger();
 
 	static {
+		try {
+		System.out.format("load libreflex....\n");
 		System.loadLibrary("reflex");
+		} catch (UnsatisfiedLinkError e) {
+			System.err.println("Native code library failed to load.\n" + e);
+		}
 	}
-
-	/* SPDK util */
 
 	/* buffers returned are locked and have vtophys translation -> required for local NVMe access */
 	public native long _malloc(long size, long alignment);
-
 	public native void _free(long address);
 
-	/* ReFlex functions */
+	/* ReFlex-libevent functions */
 	public native void _hello_reflex();
-	
-	/* libevent functions */
 	public native void _connect(long ip_addr, int port);
 	public native int _poll(); 
-
-	//FIXME: do we need to know the dst IP addr and port too? how does threading + multiple connections work?
 	public native int _submit_io(long address, long lba, int count, long compl_addr, boolean write); 
 	
 

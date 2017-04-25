@@ -67,13 +67,18 @@ public class ReFlexEndpoint implements DiSNIEndpoint {
 		this.completedArrayAddress = ((DirectBuffer)completedArray).address();
 	}
 */	
-	
+
+	public void hello_reflex(){
+		nativeDispatcher._hello_reflex();
+	}
+
 	public void connect(URI uri) throws Exception {
 		if (open){
 			return;
 		}
 		this.dst_ip_addr = Long.parseLong(uri.getHost());
 		this.dst_port = uri.getPort();
+		System.out.format("call nativeDispatcher in connect...");
 		nativeDispatcher._connect(dst_ip_addr, dst_port); 
 		this.open = true;		
 	}	
