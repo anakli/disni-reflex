@@ -34,8 +34,8 @@ public class ReFlexEndpoint implements DiSNIEndpoint {
 		this.nativeDispatcher = nativeDispatcher;
 		this.open = false; //newConnection != null;
 		this.nsSectorSize = 512;
-		//this.nsSize = 0x1749a956000L / nsSectorSize; //for SAMSUNG device
-		this.nsSize = 0x5d27216000L / nsSectorSize; //for Intel device
+		this.nsSize = 0x1749a956000L; // / nsSectorSize; //for SAMSUNG device
+		//this.nsSize = 0x5d27216000L / nsSectorSize; //for Intel device
 
 		//FIXME: nvmf gets IOqueueSize when connect, and doesn't seem to constantly update it
 		//       so I think it's a static max io queue size value but should check
